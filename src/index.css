@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.keep-scrolling {
+  overflow-y: scroll; /* Add the ability to scroll the y axis */
+}
+
+/* Hide the scrollbar for Chrome, Safari and Opera */
+.keep-scrolling::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide the scrollbar for Internet Explorer, Edge and Firefox */
+.keep-scrolling {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.animate1 {
+  width: 1rem;
+  background: green;
+  animation: hieght1 500ms infinite alternate;
+  transition: all 1ms;
+}
+.animate2 {
+  width: 1rem;
+  background: green;
+  animation: hieght2 350ms infinite alternate;
+}
+.animate3 {
+  width: 1rem;
+
+  background: green;
+  animation: hieght3 450ms infinite alternate;
+}
+.animate4 {
+  width: 1rem;
+
+  background: green;
+  animation: hieght4 400ms infinite alternate;
+}
+
+@keyframes hieght1 {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+@keyframes hieght2 {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 80%;
+  }
+}
+@keyframes hieght3 {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 90%;
+  }
+}
+@keyframes hieght4 {
+  0% {
+    height: 10%;
+  }
+  100% {
+    height: 95%;
+  }
+}
