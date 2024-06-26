@@ -10,7 +10,7 @@ const MyAlbums = () => {
   useSpotifyAlbum(id!);
 
   return (
-    <PlayerLayout className="p-0 mr-2 rounded-md mt-2 font-Roboto">
+    <PlayerLayout className="p-0 mr-2 rounded-md mt-2 font-Roboto w-full">
       {<Components />}
     </PlayerLayout>
   );

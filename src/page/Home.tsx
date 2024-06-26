@@ -1,4 +1,3 @@
-import { CiSearch } from "react-icons/ci";
 import PlayerLayout from "../layouts/PlayerLayout";
 import { GrFormPrevious } from "react-icons/gr";
 import { MdOutlineNavigateNext } from "react-icons/md";
@@ -9,18 +8,10 @@ const Home = () => {
   useSpotifyApi();
 
   return (
-    <PlayerLayout className="p-2 rounded-l-md">
+    <PlayerLayout className="p-2 rounded-l-md w-full">
       {
         <>
           <div className=" flex items-center gap-2 ">
-            <div className=" w-[12rem] h-full  bg-[#1a1a22] rounded-xl py-3 px-2 flex items-center gap-2">
-              <CiSearch />
-              <input
-                type="text"
-                className=" bg-inherit text-xs outline-none text-[#cccc]"
-                placeholder="Search what you listen"
-              />
-            </div>
             <div className=" flex gap-2">
               <div className=" h-10 w-10 rounded-full bg-[#17171f] flex items-center justify-center cursor-pointer hover:bg-slate-700 transition-all duration-200">
                 <GrFormPrevious size={"25px"} />

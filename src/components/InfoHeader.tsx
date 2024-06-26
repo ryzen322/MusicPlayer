@@ -1,6 +1,7 @@
 import { MdVerified } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import { useAppSelector } from "../slice/store";
+import { LoadingHeader } from "./Skelaton-UI";
 
 // type Ref = HTMLDivElement;
 
@@ -9,10 +10,13 @@ const InfoHeader = () => {
 
   const followers = artistInfo?.followers.total;
   const f = new Intl.NumberFormat().format(followers!);
-  console.log();
+
+  if (!artistInfo?.name) {
+    <LoadingHeader />;
+  }
 
   return (
-    <div className=" w-full h-[30%]  flex flex-col lg:h-[50%] relative">
+    <div className=" w-full h-[30%] pt-2 flex flex-col lg:h-[50%] relative">
       <div className=" w-full h-[15%] relative z-20 px-4 flex items-center justify-between">
         <div className=" h-[2rem] w-[2rem] rounded-full bg-black/60 flex items-center justify-center cursor-pointer">
           <GrFormPrevious className=" text-2xl" />

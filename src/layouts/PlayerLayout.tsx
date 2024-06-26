@@ -10,7 +10,7 @@ const PlayerLayout = ({ children, className }: ClassName) => {
 
   return (
     <div
-      className={` w-full ${
+      className={`  ${
         playingSize ? "h-[83.25dvh]" : "h-[90dvh]"
       } rounded-l-md mt-1 overflow-y-scroll scroll-smooth keep-scrolling bg-[#141319] text-white ${className}`}
     >

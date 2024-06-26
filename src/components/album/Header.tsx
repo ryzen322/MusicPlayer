@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useAppSelector } from "../../slice/store";
+import { LoadingHeader } from "../Skelaton-UI";
 
 export function Header() {
   const { singleAlbum } = useAppSelector((state) => state.playlist);
@@ -23,7 +24,7 @@ export function Header() {
   }
 
   if (singleAlbum.name.length <= 0) {
-    return <>loading....</>;
+    return <LoadingHeader />;
   }
 
   return (

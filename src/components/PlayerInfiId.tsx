@@ -30,7 +30,7 @@ const PlayerInfiId = () => {
     return () => observer.disconnect();
   }, [divRef]);
   return (
-    <PlayerLayout className="p-0 mr-2 rounded-md mt-1">
+    <PlayerLayout className="p-0 mr-2 rounded-md mt-1 w-full">
       {
         <>
           <InfoHeader />
