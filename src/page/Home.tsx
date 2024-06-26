@@ -2,11 +2,8 @@ import PlayerLayout from "../layouts/PlayerLayout";
 import { GrFormPrevious } from "react-icons/gr";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import ContextMain from "../components/ContextMain";
-import { useSpotifyApi } from "../hooks/useSpotifyApi";
 
 const Home = () => {
-  useSpotifyApi();
-
   return (
     <PlayerLayout className="p-2 rounded-l-md w-full">
       {

@@ -5,6 +5,7 @@ import {
   SingleAlbum,
   SingleAlbumResponse,
   TopPlaylist,
+  liked,
   topArtist,
 } from "../types";
 
@@ -53,6 +54,7 @@ interface PlayListArr {
   single?: SingleAlbum[];
   featuring?: SingleAlbum[];
   singleAlbum: SingleAlbumResponse;
+  likes: liked[];
 }
 
 const initialState: PlayListArr = {
@@ -84,6 +86,7 @@ const initialState: PlayListArr = {
     type: "",
     uri: "",
   },
+  likes: [],
 };
 
 export const playlistSlice = createSlice({
@@ -124,6 +127,9 @@ export const playlistSlice = createSlice({
     singleAlbum: (state, action: PayloadAction<SingleAlbumResponse>) => {
       state.singleAlbum = action.payload;
     },
+    setLikes: (state, action: PayloadAction<liked[]>) => {
+      state.likes = action.payload;
+    },
   },
 });
 
@@ -137,4 +143,5 @@ export const {
   setArtistAlbum,
   setAlbum,
   singleAlbum,
+  setLikes,
 } = playlistSlice.actions;

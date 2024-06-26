@@ -236,3 +236,16 @@ export type User = {
   lastname?: string | null;
   gender?: string | null | boolean;
 };
+
+export interface Tract {
+  name: string;
+  uri: string;
+  type: string;
+  id: string;
+  album: albumType;
+}
+
+export interface liked {
+  added_at: string;
+  track: Tract;
+}

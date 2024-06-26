@@ -5,6 +5,7 @@ import { useAppDispatch } from "../slice/store";
 import { setUser } from "../slice/userSlice";
 import {
   setAccesToken,
+  setLikes,
   // setPlay,
   setPlaylist,
   setTopPayList,
@@ -59,7 +60,6 @@ export function useSpotifyApi() {
     });
     spotifyApi.getUserPlaylists().then((data) => {
       const playlist = data.items;
-      // console.log(playlist);
 
       dispatch(setPlaylist(playlist));
     });
@@ -135,6 +135,10 @@ export function useSpotifyApi() {
     spotifyApi.getMyTopArtists().then(function (data) {
       // My Top Playlist
       dispatch(setTopArtist(data.items));
+    });
+
+    spotifyApi.getMySavedTracks().then((data) => {
+      dispatch(setLikes(data.items));
     });
   }, [dispatch]);
 }

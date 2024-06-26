@@ -10,9 +10,11 @@ import PlayerInfo from "./components/PlayerInfo";
 import PlayerInfiId from "./components/PlayerInfiId";
 import Album from "./page/Album";
 import MyAlbums from "./components/MyAlbums";
+import { useSpotifyApi } from "./hooks/useSpotifyApi";
 
 function App() {
   const user = useAppSelector((state) => state.playlist);
+  useSpotifyApi();
 
   return (
     <div className=" h-dvh w-full flex relative gap-2 bg-[#000000] ">
