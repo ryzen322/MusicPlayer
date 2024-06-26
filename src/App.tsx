@@ -31,7 +31,7 @@ function App() {
         </Route>
       </Routes>
       <div className=" w-full absolute bottom-0 left-0 bg-stone-50">
-        {/* <Player accestoken={user.token ? user.token : null} /> */}
+        <Player accestoken={user.token ? user.token : null} />
       </div>
     </div>
   );
