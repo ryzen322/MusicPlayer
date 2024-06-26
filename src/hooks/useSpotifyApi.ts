@@ -134,10 +134,12 @@ export function useSpotifyApi() {
     });
     spotifyApi.getMyTopArtists().then(function (data) {
       // My Top Playlist
+
       dispatch(setTopArtist(data.items));
     });
 
     spotifyApi.getMySavedTracks().then((data) => {
+      console.log(data);
       dispatch(setLikes(data.items));
     });
   }, [dispatch]);

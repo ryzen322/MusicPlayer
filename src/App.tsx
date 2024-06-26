@@ -11,6 +11,8 @@ import PlayerInfiId from "./components/PlayerInfiId";
 import Album from "./page/Album";
 import MyAlbums from "./components/MyAlbums";
 import { useSpotifyApi } from "./hooks/useSpotifyApi";
+import TrackPage from "./components/TrackPage";
+import Track from "./components/Track";
 
 function App() {
   const user = useAppSelector((state) => state.playlist);
@@ -26,6 +28,8 @@ function App() {
         <Route path="playerInfo/:id" element={<PlayerInfiId />} />
         <Route path="album" element={<Album />} />
         <Route path="album/:id" element={<MyAlbums />} />
+        <Route path="tract" element={<TrackPage />} />
+        <Route path="tract/:id" element={<Track />} />
 
         <Route path="/about">
           <Route index element={<About />} />
