@@ -52,7 +52,7 @@ interface PlayListArr {
   artistAlbum: AlbumTracks[];
   single?: SingleAlbum[];
   featuring?: SingleAlbum[];
-  singleAlbum?: SingleAlbumResponse;
+  singleAlbum: SingleAlbumResponse;
 }
 
 const initialState: PlayListArr = {
@@ -66,6 +66,24 @@ const initialState: PlayListArr = {
   artistAlbum: [],
   featuring: [],
   single: [],
+  singleAlbum: {
+    album_type: "",
+    artists: [],
+    copyrights: [],
+    href: "",
+    id: "",
+    images: [],
+    label: "",
+    name: "",
+    popularity: 0,
+    release_date: "",
+    total_tracks: 0,
+    tracks: {
+      items: [],
+    },
+    type: "",
+    uri: "",
+  },
 };
 
 export const playlistSlice = createSlice({

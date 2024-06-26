@@ -203,6 +203,11 @@ export interface Items {
   uri: string;
 }
 
+interface Copyrights {
+  text: string;
+  p?: string;
+}
+
 export interface TracksItems {
   items: Items[];
 }
@@ -221,6 +226,7 @@ export interface SingleAlbumResponse {
   type: string;
   uri: string;
   tracks: TracksItems;
+  copyrights: Copyrights[];
 }
 
 export type User = {

@@ -15,13 +15,11 @@ const useSpotifyAlbum = (id: string) => {
 
     spotifyApi.getAlbum(id).then((data) => {
       // album of amircan dream of 21 savage example
-      console.log(data);
       dispatch(singleAlbum(data));
     });
 
-    spotifyApi.searchArtists("21 savage", { limit: 2 }).then((data) => {
-      // data of 21 savage
-      console.log(data);
+    spotifyApi.search("21 savage", ["album"]).then((item) => {
+      console.log(item);
     });
   }, [token, dispatch, id]);
 };

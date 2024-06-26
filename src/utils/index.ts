@@ -25,3 +25,11 @@ const usePlay = () => {
 };
 
 export default usePlay;
+
+export function convertDate(time: string | number): string | number {
+  return new Date(time).toLocaleString("en-us", {
+    month: "long",
+    year: "numeric",
+    day: "numeric",
+  });
+}

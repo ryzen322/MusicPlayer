@@ -2,9 +2,13 @@ import { IoIosMore } from "react-icons/io";
 import MusicList from "./MusicList";
 import { useAppSelector } from "../../slice/store";
 import { IoMdPlay } from "react-icons/io";
+import { convertDate } from "../../utils";
+import ListAlbum from "../ListAlbum";
 
 export function Music() {
-  const { singleAlbum } = useAppSelector((state) => state.playlist);
+  const { singleAlbum, single, featuring } = useAppSelector(
+    (state) => state.playlist
+  );
 
   return (
     <div className=" w-full flex flex-col p-4 gap-6 beha">
@@ -17,7 +21,7 @@ export function Music() {
           <IoIosMore className=" text-4xl" />
         </div>
       </div>
-      <ul className=" w-full min-h-[35rem] max-h-[35rem] overflow-y-scroll ">
+      <ul className=" w-full  ">
         <li className=" w-full flex justify-between px-6 py-2 border-b mb-3">
           <div className=" flex items-center gap-4">
             <p className=" text-sm text-stone-500 font-semibold"># </p>
@@ -34,6 +38,21 @@ export function Music() {
           />
         ))}
       </ul>
+
+      <div className=" w-full flex flex-col text-xs gap-1  text-stone-400">
+        <p>{convertDate(singleAlbum.release_date)}</p>
+        {singleAlbum?.copyrights.map((item) => (
+          <p key={item.text}>{item.text}</p>
+        ))}
+      </div>
+
+      <div className=" w-full  flex flex-col">
+        <h1 className=" text-2xl font-semibold">
+          More by {singleAlbum.artists[0].name}
+        </h1>
+        <ListAlbum album={single} />
+        <ListAlbum album={featuring} />
+      </div>
     </div>
   );
 }

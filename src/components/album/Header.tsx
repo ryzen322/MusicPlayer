@@ -13,15 +13,17 @@ export function Header() {
       .reduce((curr, acc) => acc + curr, 0);
   }, [singleAlbum?.tracks.items]);
 
-  function durationOfAlbum(time: number | undefined): string | undefined {
-    if (time) {
-      const minutes = Math.floor(time / 60);
-      const seconds = time % 60;
+  function durationOfAlbum(time: number): string {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
 
-      return `${minutes} minutes : ${
-        seconds < 10 ? `0${seconds}` : seconds
-      } seconds`;
-    }
+    return `${minutes} minutes : ${
+      seconds < 10 ? `0${seconds}` : seconds
+    } seconds`;
+  }
+
+  if (singleAlbum.name.length <= 0) {
+    return <>loading....</>;
   }
 
   return (
@@ -42,15 +44,15 @@ export function Header() {
           "
         >
           <img
-            src="https://i.scdn.co/image/ab67616d00001e0240e0da427b6dfb8ccec9cc87"
+            src={singleAlbum.images[1]?.url}
             alt=""
             className=" w-full h-full rounded-md"
           />
         </div>
         <div className=" flex flex-col justify-between md:justify-end lg:gap-4 xl:gap-2 2xl:gap-6">
-          <h1 className=" font-bold text-sm">{singleAlbum?.album_type}</h1>
+          <h1 className=" font-bold text-sm">{singleAlbum.album_type}</h1>
           <p className=" text-[1.7rem] font-bold  leading-8 lg:text-[1.8rem] lg:leading-[3.5rem] 2xl:text-[4.03rem]">
-            {singleAlbum?.name}
+            {singleAlbum.name}
           </p>
           <div className="  flex items-center gap-2 text-xs">
             <div className=" h-[1.5rem] w-[1.5rem] bg-stone-900 rounded-full overflow-hidden">
@@ -60,7 +62,7 @@ export function Header() {
                 className=" w-full h-full "
               />
             </div>
-            <p className="  font-semibold">{singleAlbum?.artists[0].name}</p>
+            <p className="  font-semibold">{singleAlbum.artists[0]?.name}</p>
             <span>
               - {singleAlbum?.release_date} - {singleAlbum?.tracks.items.length}
               songs , {durationOfAlbum(time)}
