@@ -5,6 +5,7 @@ import PlayerLayout from "../layouts/PlayerLayout";
 import { LuLibrary } from "react-icons/lu";
 import { useAppSelector } from "../slice/store";
 import { CiMusicNote1 } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   const { playList } = useAppSelector((state) => state.playlist);
@@ -30,7 +31,8 @@ const NavigationBar = () => {
         </a>
         <ul className=" w-full h-full overflow-y-scroll keep-scrolling flex flex-col gap-3 px-[6px] scroll-auto rounded-md py-1 ">
           {playList.map((item) => (
-            <li
+            <Link
+              to={`/tract/${item.id}`}
               key={item.id}
               className="w-full min-h-[6dvh] max-h-[6dvh]  flex items-center justify-center  text-[1.75rem] cursor-pointer bg-[#282828] rounded-md"
             >
@@ -45,7 +47,7 @@ const NavigationBar = () => {
                   />
                 )}
               </div>
-            </li>
+            </Link>
           ))}
         </ul>
       </div>
