@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  overscroll-behavior: none;
+}
+
 .keep-scrolling {
   overflow-y: scroll; /* Add the ability to scroll the y axis */
 }
