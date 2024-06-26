@@ -48,7 +48,7 @@ export function Music() {
 
       <div className=" w-full  flex flex-col">
         <h1 className=" text-2xl font-semibold">
-          More by {singleAlbum.artists[0].name}
+          More by {singleAlbum.artists[0]?.name}
         </h1>
         <ListAlbum album={single} />
         <ListAlbum album={featuring} />
