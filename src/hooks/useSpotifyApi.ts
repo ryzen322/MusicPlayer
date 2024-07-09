@@ -139,7 +139,6 @@ export function useSpotifyApi() {
     });
 
     spotifyApi.getMySavedTracks().then((data) => {
-      console.log(data);
       dispatch(setLikes(data.items));
     });
   }, [dispatch]);

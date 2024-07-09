@@ -11,7 +11,7 @@ const NavigationBar = () => {
   const { playList } = useAppSelector((state) => state.playlist);
 
   return (
-    <PlayerLayout className=" ml-2  rounded-md w-[5rem] flex flex-col gap-2 bg-black pt-2">
+    <PlayerLayout className=" ml-2  rounded-md w-[4rem] max-w-[4rem] min-w-[4rem]  flex flex-col gap-2 bg-black pt-2">
       <div className="  flex flex-col items-center bg-[#121212] rounded-md">
         <div className=" w-full  rounded-md  flex  flex-col items-center ">
           <div className=" w-full h-[6dvh] flex items-center justify-center  text-[1.75rem] cursor-pointer">
