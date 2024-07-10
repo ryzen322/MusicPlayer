@@ -1,6 +1,7 @@
-import { useMemo } from "react";
 import { useAppSelector } from "../../slice/store";
 import { LoadingHeader } from "../Skelaton-UI";
+import { durationOfAlbum } from "../../utils";
+import { useMemo } from "react";
 
 export function Header() {
   const { singleAlbum } = useAppSelector((state) => state.playlist);
@@ -13,15 +14,6 @@ export function Header() {
       })
       .reduce((curr, acc) => acc + curr, 0);
   }, [singleAlbum?.tracks.items]);
-
-  function durationOfAlbum(time: number): string {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-
-    return `${minutes} minutes : ${
-      seconds < 10 ? `0${seconds}` : seconds
-    } seconds`;
-  }
 
   if (singleAlbum.name.length <= 0) {
     return <LoadingHeader />;

@@ -251,6 +251,14 @@ export interface liked {
   track: Tract;
 }
 
+export type TrackAlbum = {
+  album_type: string;
+  artists?: TrackArtist[];
+  images: Images[];
+  id: string;
+  href: string;
+};
+
 export type TrackArtist = {
   external_urls: External_urls;
   id: string;
@@ -280,6 +288,7 @@ export type TracksArray = {
   external_ids?: External_ids;
 
   artists?: TrackArtist[];
+  album?: TrackAlbum;
 };
 
 export type TrackItems = {

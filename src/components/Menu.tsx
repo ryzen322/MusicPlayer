@@ -1,7 +1,12 @@
 import { useAppSelector } from "../slice/store";
+import { durationOfAlbum, useTotalMusic } from "../utils";
 
 export const Menu = () => {
   const { track } = useAppSelector((item) => item.tract);
+
+  const x = track?.tracks.items.map((item) => item.track.duration_ms);
+
+  const { songsDuration, totalSongs } = useTotalMusic(x);
 
   if (!track) {
     return (
@@ -22,19 +27,26 @@ export const Menu = () => {
         </div>
       </div>
       <div className=" flex gap-2 mt-auto sm:gap-4">
-        <div className=" h-[7.5rem] w-[8rem] bg-stone-900 rounded-md shadow-black sm:h-[9rem] sm:w-[9rem] lg:h-[12rem] lg:w-[12rem]"></div>
+        <div className=" h-[7.5rem] w-[8rem] bg-stone-900 rounded-md shadow-black sm:h-[9rem] sm:w-[9rem] lg:h-[12rem] lg:w-[12rem]">
+          <img
+            src={track.images[1].url}
+            alt=""
+            className=" w-full h-full rounded-md object-cover"
+          />
+        </div>
         <div className=" flex flex-col justify-between">
           <h1 className=" text-xs font-semibold text-white sm:text-sm lg:text-lg">
             Public PlayList
           </h1>
           <h1 className=" text-white font-bold text-4xl sm:text-6xl lg:text-8xl">
-            Anime
+            {track.name}
           </h1>
           <div className=" flex gap-1 items-center sm:gap-2">
-            <div className=" h-[1.5rem] w-[1.5rem] bg-stone-400  rounded-full sm:h-[2rem] sm:w-[2rem] "></div>
-            <h1 className=" text-white font-bold text-xs sm:text-sm">XQc ·</h1>
+            <h1 className=" text-white font-bold text-xs sm:text-sm">
+              {track.owner.display_name} ·
+            </h1>
             <p className=" text-white/70 text-xs font-semibold sm:text-sm">
-              9 songs, 36 min 9 sec
+              {totalSongs} songs, {durationOfAlbum(songsDuration)}
             </p>
           </div>
         </div>

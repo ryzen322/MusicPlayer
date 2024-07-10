@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { IoSearch, IoShuffle } from "react-icons/io5";
-import { converTime, dateFnsAgo } from "../utils";
+import { TractList } from "./TractList";
+import { useAppSelector } from "../slice/store";
 
 export const TractMenu = () => {
   const [show, setShow] = useState(false);
+  const { track } = useAppSelector((item) => item.tract);
 
   function ToggleSearch() {
     setShow(!show);
@@ -60,46 +62,19 @@ export const TractMenu = () => {
               <h1>Time</h1>
             </div>
           </li>
-          <TractList />
+          {track?.tracks.items.map((item, index) => (
+            <TractList
+              key={item.added_at}
+              date={item.added_at}
+              time={item.track.duration_ms}
+              title={item.track.name}
+              number={index + 1}
+              feat={item.track.artists?.map((list) => list.name)}
+              image={item.track.album?.images[2].url}
+            />
+          ))}
         </ul>
       </div>
     </>
-  );
-};
-
-export const TractList = () => {
-  return (
-    <li className="  w-full   grid grid-cols-5 text-stone-400 text-sm rounded-md gap-6 hover:bg-stone-700/35 cursor-pointer transition-all duration-200 h-[3.5rem] sm:h-[4rem] group">
-      <div className="  col-span-2 flex items-center pl-6 gap-3 py-[6px] overflow-hidden">
-        <div className=" h-full w-[10px] max-w-[10px] min-w-[10px]  flex items-center">
-          <h1 className=" text-base font-medium">
-            <span className=" block group-hover:hidden">1</span>
-            <FaPlay className=" text-[11px] hidden group-hover:block" />
-          </h1>
-        </div>
-        <div className=" h-full w-[3rem] rounded-md bg-stone-400 flex-shrink-0 sm:w-[4rem]"></div>
-        <div className=" flex flex-col justify-between h-full w-full  ">
-          <h1 className=" text-sm font-semibold text-white truncate">
-            Nanka Shiawasa(FLAME of Recca)
-          </h1>
-          <p className=" text-xs font-semibold">Miura Jam</p>
-        </div>
-      </div>
-      <div className="  flex items-center ">
-        <h1 className=" text-xs font-semibold truncate text-stone-400">
-          Nanka Shiawasa(FLAME of Recca)
-        </h1>
-      </div>
-      <div className="  flex items-center justify-center">
-        <h1 className=" text-xs font-semibold truncate text-stone-400">
-          {dateFnsAgo("2023-06-14T02:20:52Z")}
-        </h1>
-      </div>
-      <div className="  flex items-center justify-center">
-        <h1 className=" text-xs font-semibold truncate text-stone-400">
-          {converTime(243017)}
-        </h1>
-      </div>
-    </li>
   );
 };

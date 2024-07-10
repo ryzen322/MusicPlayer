@@ -1,6 +1,7 @@
 import { formatDistance } from "date-fns";
 import { setPlay } from "../slice/playlistSlice";
 import { useAppDispatch } from "../slice/store";
+import { useMemo } from "react";
 
 export function converTime(duration: number): string {
   const time = Math.floor(duration / 1000);
@@ -42,3 +43,30 @@ export function dateFnsAgo(time: string) {
 
   return `${result} ago`;
 }
+
+export function durationOfAlbum(time: number | undefined): string {
+  if (time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+    return `${minutes} mins : ${seconds < 10 ? `0${seconds}` : seconds} sec`;
+  } else {
+    return "";
+  }
+}
+
+export const useTotalMusic = (items: number[] | undefined) => {
+  const total = useMemo(() => {
+    const songsDuration = items
+      ?.map((num) => Math.floor(num / 1000))
+      .reduce((acc, curr) => acc + curr);
+    const totalSongs = items?.length;
+
+    return {
+      songsDuration,
+      totalSongs,
+    };
+  }, [items]);
+
+  return total;
+};

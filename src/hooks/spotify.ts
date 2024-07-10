@@ -3,10 +3,10 @@ const client_id = "83d1a2c7797647918503f36c8ed209f0";
 
 export const autEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri =
-  "https://music-player-git-main-ryzen322s-projects.vercel.app/";
+// const redirectUri =
+//   "https://music-player-git-main-ryzen322s-projects.vercel.app/";
 
-// const redirectUri = "http://localhost:5173/";
+const redirectUri = "http://localhost:5173/";
 
 const scopes = [
   "streaming",
