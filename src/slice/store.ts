@@ -4,12 +4,12 @@ import { playlistSlice } from "./playlistSlice";
 import { categorySlice } from "./categorySlice";
 import { recommendationSlice } from "./recommendationSlice";
 import { toolsSlice } from "./toolsSlice";
-// import { trackSlice } from "./tractSlice";
+import { trackSlice } from "./tractSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const store = configureStore({
   reducer: {
-    // tract: trackSlice.reducer,
+    tract: trackSlice.reducer,
     user: UserSlice.reducer,
     playlist: playlistSlice.reducer,
     category: categorySlice.reducer,
