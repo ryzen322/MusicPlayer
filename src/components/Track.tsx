@@ -7,7 +7,6 @@ import { TractMenu } from "./TractMenu";
 
 const Track = () => {
   const { id } = useParams();
-
   useSpotifyPlayList(id);
 
   return (

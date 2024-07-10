@@ -1,3 +1,4 @@
+import { formatDistance } from "date-fns";
 import { setPlay } from "../slice/playlistSlice";
 import { useAppDispatch } from "../slice/store";
 
@@ -32,4 +33,12 @@ export function convertDate(time: string | number): string | number {
     year: "numeric",
     day: "numeric",
   });
+}
+
+export function dateFnsAgo(time: string) {
+  const date = new Date();
+
+  const result = formatDistance(new Date(date), new Date(time));
+
+  return `${result} ago`;
 }

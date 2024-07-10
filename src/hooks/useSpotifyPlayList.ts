@@ -18,7 +18,9 @@ export const useSpotifyPlayList = (id: string | undefined) => {
     });
 
     if (id) {
-      spotifyApi.getPlaylist(id).then(() => {});
+      spotifyApi.getPlaylist(id).then((data) => {
+        console.log(data);
+      });
     }
     return () => {};
   }, [token, dispatch, id]);
