@@ -23,7 +23,7 @@ const useSpotifyInfo = (userInfoId: userInfoId) => {
     dispatch(setAccesToken(token));
     spotifyApi.getUserPlaylists().then((data) => {
       const playlist = data.items;
-      // console.log(playlist);
+
       dispatch(setPlaylist(playlist));
     });
     if (userInfoId) {

@@ -17,7 +17,7 @@ import {
   setRecommendationLocal,
   setTopArtist,
 } from "../slice/recommendationSlice";
-
+import { redirect } from "react-router-dom";
 const spotifyApi = new SpotifyWebApi();
 
 export function useSpotifyApi() {
@@ -61,6 +61,8 @@ export function useSpotifyApi() {
     spotifyApi.getUserPlaylists().then((data) => {
       const playlist = data.items;
 
+      // my playlist navbar
+      // console.log(playlist);
       dispatch(setPlaylist(playlist));
     });
     spotifyApi.getCategories({ limit: 30, offset: 1 }).then((data) => {
@@ -111,7 +113,6 @@ export function useSpotifyApi() {
     });
     spotifyApi.getFeaturedPlaylists().then((data) => {
       // Featured playlist
-
       dispatch(setRecommendationIntl(data.playlists.items));
     });
     spotifyApi.searchTracks("family affairs").then(() => {
@@ -134,12 +135,15 @@ export function useSpotifyApi() {
     });
     spotifyApi.getMyTopArtists().then(function (data) {
       // My Top Playlist
-
       dispatch(setTopArtist(data.items));
     });
 
     spotifyApi.getMySavedTracks().then((data) => {
       dispatch(setLikes(data.items));
     });
+
+    // try to fetch this id "spotify:playlist:55mK7gVpJqsu8BxEqL3XMk"
+
+    redirect("/");
   }, [dispatch]);
 }
