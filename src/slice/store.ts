@@ -5,9 +5,11 @@ import { categorySlice } from "./categorySlice";
 import { recommendationSlice } from "./recommendationSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { toolsSlice } from "./toolsSlice";
+import { trackSlice } from "./tractSlice";
 
 const store = configureStore({
   reducer: {
+    tract: trackSlice.reducer,
     user: UserSlice.reducer,
     playlist: playlistSlice.reducer,
     category: categorySlice.reducer,

@@ -29,6 +29,14 @@ export type External_urls = {
   spotify: string;
 };
 
+export type Owner = {
+  external_urls: External_urls;
+  display_name?: string;
+  href: string;
+  id: string;
+  type: string;
+  uri: string;
+};
 export type Artist = {
   external_urls: External_urls;
   href: string;
@@ -62,14 +70,7 @@ export interface PlayList {
   id: string;
   name: string;
   images: Images[];
-  owner: {
-    external_urls: External_urls;
-    display_name?: string;
-    href: string;
-    id: string;
-    type: string;
-    uri: string;
-  };
+  owner: Owner;
   primary_color?: string;
   public: boolean;
   snapshot_id: string;
@@ -248,4 +249,63 @@ export interface Tract {
 export interface liked {
   added_at: string;
   track: Tract;
+}
+
+export type TrackArtist = {
+  external_urls: External_urls;
+  id: string;
+  href: string;
+  name: string;
+  type: string;
+  uri: string;
+};
+
+export type TracksArray = {
+  name: string;
+  disc_number?: number;
+  espisode?: boolean;
+  duration_ms: number;
+  explicit: boolean;
+  href: string;
+  id: string;
+  is_local?: boolean;
+  popularity?: number;
+  preview_url?: string;
+  track?: boolean;
+  track_number?: number;
+  type: string;
+  uri: string;
+  external_urls: External_urls;
+
+  external_ids?: External_ids;
+
+  artists?: TrackArtist[];
+};
+
+export type TrackItems = {
+  added_at: string;
+  is_local: boolean;
+  primary_color?: null;
+  video_thumbnail?: {
+    url: null;
+  };
+  track: TracksArray;
+};
+
+export interface Tracks {
+  id: string;
+  images: Images[];
+  name: string;
+  owner: Owner;
+  type: string;
+  uri: string;
+  tracks: {
+    href: string;
+    limit: number;
+    next: null | string;
+    offset: number;
+    previous: null | string;
+    total: number;
+    items: TrackItems[];
+  };
 }

@@ -3,6 +3,7 @@ import { useAppSelector } from "../slice/store";
 import { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import { setPlaylist } from "../slice/playlistSlice";
+import { setTrack } from "../slice/tractSlice";
 const spotifyApi = new SpotifyWebApi();
 
 export const useSpotifyPlayList = (id: string | undefined) => {
@@ -19,9 +20,11 @@ export const useSpotifyPlayList = (id: string | undefined) => {
 
     if (id) {
       spotifyApi.getPlaylist(id).then((data) => {
-        console.log(data);
+        dispatch(setTrack(data));
       });
     }
-    return () => {};
+    return () => {
+      dispatch(setTrack(null));
+    };
   }, [token, dispatch, id]);
 };

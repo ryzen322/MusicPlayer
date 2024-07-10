@@ -1,4 +1,16 @@
+import { useAppSelector } from "../slice/store";
+
 export const Menu = () => {
+  const { track } = useAppSelector((item) => item.tract);
+
+  if (!track) {
+    return (
+      <div className=" w-full h-full flex items-center justify-center text-white text-4xl">
+        loading niggas
+      </div>
+    );
+  }
+
   return (
     <>
       <div className=" h-[2rem] w-full  flex justify-between sm:h-[2.5rem] ">
