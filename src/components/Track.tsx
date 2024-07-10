@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useSpotifyPlayList } from "../hooks/useSpotifyPlayList";
+// import { useSpotifyPlayList } from "../hooks/useSpotifyPlayList";
 
 import { Menu } from "./Menu";
 
@@ -7,7 +7,8 @@ import { TractMenu } from "./TractMenu";
 
 const Track = () => {
   const { id } = useParams();
-  useSpotifyPlayList(id);
+  console.log(id);
+  // useSpotifyPlayList(id);
 
   return (
     <main className=" w-full pr-2 pt-2 rounded-md font-Roboto keep-scrolling">
