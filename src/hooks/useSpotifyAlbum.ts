@@ -18,9 +18,7 @@ const useSpotifyAlbum = (id: string) => {
       dispatch(singleAlbum(data));
     });
 
-    spotifyApi.search("21 savage", ["album"]).then((item) => {
-      console.log(item);
-    });
+    spotifyApi.search("21 savage", ["album"]).then(() => {});
   }, [token, dispatch, id]);
 };
 

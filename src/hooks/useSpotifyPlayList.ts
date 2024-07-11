@@ -8,6 +8,7 @@ const spotifyApi = new SpotifyWebApi();
 
 export const useSpotifyPlayList = (id: string | undefined) => {
   const { token } = useAppSelector((state) => state.playlist);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +21,6 @@ export const useSpotifyPlayList = (id: string | undefined) => {
 
     if (id) {
       spotifyApi.getPlaylist(id).then((data) => {
-        console.log(data);
         dispatch(setTrack(data));
       });
     }

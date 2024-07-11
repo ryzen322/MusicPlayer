@@ -1,7 +1,6 @@
 import { formatDistance } from "date-fns";
 import { setPlay } from "../slice/playlistSlice";
 import { useAppDispatch } from "../slice/store";
-import { useMemo } from "react";
 
 export function converTime(duration: number): string {
   const time = Math.floor(duration / 1000);
@@ -55,18 +54,33 @@ export function durationOfAlbum(time: number | undefined): string {
   }
 }
 
-export const useTotalMusic = (items: number[] | undefined) => {
-  const total = useMemo(() => {
-    const songsDuration = items
-      ?.map((num) => Math.floor(num / 1000))
-      .reduce((acc, curr) => acc + curr);
-    const totalSongs = items?.length;
+interface MusicTots {
+  songsDuration: number;
+  totalSong: number;
+}
 
+export const useTotalMusic = (items: number[] | undefined): MusicTots => {
+  if (items) {
+    if (items.length > 0) {
+      const songsDuration = items
+        ?.map((num) => Math.floor(num / 1000))
+        .reduce((acc, curr) => acc + curr);
+      const totalSongs = items?.length;
+
+      return {
+        songsDuration,
+        totalSong: totalSongs,
+      };
+    } else {
+      return {
+        songsDuration: 0,
+        totalSong: 0,
+      };
+    }
+  } else {
     return {
-      songsDuration,
-      totalSongs,
+      songsDuration: 0,
+      totalSong: 0,
     };
-  }, [items]);
-
-  return total;
+  }
 };

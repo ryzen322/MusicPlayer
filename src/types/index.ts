@@ -257,6 +257,7 @@ export type TrackAlbum = {
   images: Images[];
   id: string;
   href: string;
+  name?: string;
 };
 
 export type TrackArtist = {

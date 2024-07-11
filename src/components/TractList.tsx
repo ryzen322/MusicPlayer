@@ -8,6 +8,7 @@ interface TrackCompoments {
   number: number;
   feat?: string[];
   image?: string;
+  album?: string;
 }
 
 export const TractList = ({
@@ -17,6 +18,7 @@ export const TractList = ({
   number,
   feat,
   image,
+  album,
 }: TrackCompoments) => {
   return (
     <li className="  w-full   grid grid-cols-5 text-stone-400 text-sm rounded-md gap-6 hover:bg-stone-700/35 cursor-pointer transition-all duration-200 h-[3.5rem] sm:h-[4rem] group">
@@ -34,7 +36,7 @@ export const TractList = ({
           <h1 className=" text-sm font-semibold text-white truncate">
             {title}
           </h1>
-          <div className=" flex flex-col gap-1">
+          <div className=" flex gap-1">
             {feat?.map((item) => (
               <p key={item} className="  text-xs font-semibold">
                 {item}
@@ -45,7 +47,7 @@ export const TractList = ({
       </div>
       <div className="  flex items-center ">
         <h1 className=" text-xs font-semibold truncate text-stone-400">
-          {title}
+          {album}
         </h1>
       </div>
       <div className="  flex items-center justify-center">

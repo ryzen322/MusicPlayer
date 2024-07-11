@@ -14,7 +14,7 @@ export const TractMenu = () => {
 
   return (
     <>
-      <div className=" flex justify-between text-white pt-4 px-2">
+      <div className=" flex justify-between text-white pt-4 px-2 ">
         <div className=" flex items-center gap-2">
           <div className=" h-[3rem] w-[3rem] rounded-full bg-green-500 flex items-center justify-center text-black text-xl cursor-pointer pl-1">
             <FaPlay />
@@ -64,13 +64,14 @@ export const TractMenu = () => {
           </li>
           {track?.tracks.items.map((item, index) => (
             <TractList
-              key={item.added_at}
+              key={item.track.id}
               date={item.added_at}
               time={item.track.duration_ms}
               title={item.track.name}
               number={index + 1}
               feat={item.track.artists?.map((list) => list.name)}
               image={item.track.album?.images[2].url}
+              album={item.track.album?.name}
             />
           ))}
         </ul>

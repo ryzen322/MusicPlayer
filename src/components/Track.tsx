@@ -3,8 +3,9 @@ import { useSpotifyPlayList } from "../hooks/useSpotifyPlayList";
 
 import { Menu } from "./Menu";
 
-import { TractMenu } from "./TractMenu";
 import PlayerLayout from "../layouts/PlayerLayout";
+import { RecommendationTrack } from "./RecommendationTrack";
+import { TractMenu } from "./TractMenu";
 
 const Track = () => {
   const { id } = useParams();
@@ -17,7 +18,10 @@ const Track = () => {
         <div className=" w-full h-[14rem] bg-stone-700 rounded-t-md flex flex-col relative p-3 lg:h-[18rem]">
           <Menu />
         </div>
-        <TractMenu />
+        <div className=" mb-[5rem] px-3">
+          <TractMenu />
+        </div>
+        <RecommendationTrack />
       </main>
     </PlayerLayout>
   );
