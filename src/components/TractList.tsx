@@ -9,6 +9,9 @@ interface TrackCompoments {
   feat?: string[];
   image?: string;
   album?: string;
+  uri: string;
+  playMusicHandler: (uri: string) => void;
+  activeItem: boolean;
 }
 
 export const TractList = ({
@@ -19,9 +22,21 @@ export const TractList = ({
   feat,
   image,
   album,
+  uri,
+  playMusicHandler,
+  activeItem,
 }: TrackCompoments) => {
+  const handleMusic = (uri: string) => {
+    playMusicHandler(uri);
+  };
+
   return (
-    <li className="  w-full   grid grid-cols-5 text-stone-400 text-sm rounded-md gap-6 hover:bg-stone-700/35 cursor-pointer transition-all duration-200 h-[3.5rem] sm:h-[4rem] group">
+    <li
+      className={`  w-full   grid grid-cols-5 text-stone-400 text-sm rounded-md gap-6 ${
+        !activeItem ? " hover:bg-stone-700/35" : " bg-stone-700/35"
+      } cursor-pointer transition-all duration-200 h-[3.5rem] sm:h-[4rem] group`}
+      onClick={() => handleMusic(uri)}
+    >
       <div className="  col-span-2 flex items-center pl-6 gap-3 py-[6px] overflow-hidden">
         <div className=" h-full w-[10px] max-w-[10px] min-w-[10px]  flex items-center">
           <h1 className=" text-base font-medium">
@@ -33,7 +48,11 @@ export const TractList = ({
           <img src={image} alt="" className=" w-full h-full object-cover" />
         </div>
         <div className=" flex flex-col justify-between h-full w-full  ">
-          <h1 className=" text-sm font-semibold text-white truncate">
+          <h1
+            className={`text-sm font-semibold  truncate ${
+              !activeItem ? " text-white" : "text-green-600"
+            }`}
+          >
             {title}
           </h1>
           <div className=" flex gap-1">

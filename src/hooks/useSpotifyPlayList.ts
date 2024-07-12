@@ -21,9 +21,13 @@ export const useSpotifyPlayList = (id: string | undefined) => {
 
     if (id) {
       spotifyApi.getPlaylist(id).then((data) => {
+        console.log(data);
         dispatch(setTrack(data));
       });
+
+      spotifyApi.getMyCurrentPlaybackState().then(() => {});
     }
+
     return () => {
       dispatch(setTrack(null));
     };

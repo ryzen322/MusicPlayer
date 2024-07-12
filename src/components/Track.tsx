@@ -18,9 +18,7 @@ const Track = () => {
         <div className=" w-full h-[14rem] bg-stone-700 rounded-t-md flex flex-col relative p-3 lg:h-[18rem]">
           <Menu />
         </div>
-        <div className=" mb-[5rem] px-3">
-          <TractMenu />
-        </div>
+        <TractMenu />
         <RecommendationTrack />
       </main>
     </PlayerLayout>
